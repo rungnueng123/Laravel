@@ -23,13 +23,14 @@ Route::get('/hello', function(){
 
 Route::get('/register','MyuserController@registerpage');
 Route::get('/login','MyuserController@loginpage');
-Route::post('/login/checklogin', 'MyuserController@checklogin');
 
 Route::post('/saveregister','MyuserController@saveregisterpage');
 Route::get('/profile', 'MyuserController@profilepage');
+Route::get('/editprofile', 'MyuserController@editprofile');
 
 Route::post('/checklogin','MyuserController@checklogin');
 Route::post('/saveprofile', 'MyuserController@saveprofile');
+Route::post('/saverefcar', 'Myusercontroller@saverefcar');
 
 
 

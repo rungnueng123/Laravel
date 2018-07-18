@@ -32,7 +32,8 @@ class MyuserController extends Controller
        $Username = $request->input('Username');
        $Password = $request->input('Password');
        //Check Found User
-        $UserRecord = Userbase::where('Username',$Username)->where('Password',$Password)->first();
+        $UserRecord = Userbase::where('Username',$Username)
+            ->where('Password',$Password)->first();
         if(!empty($UserRecord)){
             $request->session()->put('userinfo', $UserRecord);//SESSION
             return redirect('/profile');
@@ -63,18 +64,46 @@ class MyuserController extends Controller
         return view('admin.profilepage')->with($data);
     }
 
-    public function saveprofile(Request $request){
+    public function saverefcar(Request $request){
         $userinfo = $request->session()->get('userinfo');
         //DELETE
         userCar::where('userID',$userinfo['UserID'])->delete();
-        /// SAVE
+        /// SAVE CarRef
         foreach($request->input('carList') as $key=>$val){
             $userCar = new userCar;
             $userCar->userID = $userinfo['UserID'];
             $userCar->CarID = $val;
             $userCar->save();
         }
-        return redirect('/profile');
+    }
+
+    public function saveprofile(Request $request){
+        if(!empty($request->input('id'))){
+            //EDIT
+            $userbase = new Userbase;
+
+            $dataUpdate = array(
+                'Username'=>$request->input('Username'),
+                'Password'=>$request->input('Password'),
+                'Email'=>$request->input('Email'),
+                'Birth'=>$request->input('Birth'),
+                'Gender'=>$request->input('Gender'),
+            );
+            $userbase->where('UserID',$request->input('id'))->update($dataUpdate);
+            //SELECT Last
+            $UserRecord = Userbase::where('UserID',$request->input('id'))->first();
+            $request->session()->put('userinfo', $UserRecord);//SESSION
+            return redirect('/editprofile');
+        }
+    }
+
+    public function editprofile(Request $request){
+       $userinfo = $request->session()->get('userinfo');
+       $data = array(
+           'userinfo'=>$userinfo
+       );
+//       dd($userinfo);
+        return view('admin.editprofilepage')->with($data);
     }
 
 }
