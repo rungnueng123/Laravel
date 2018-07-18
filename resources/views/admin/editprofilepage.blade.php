@@ -483,6 +483,7 @@
                         {{--{!! Form::label('', 'Title:', ['class' => 'control-label']) !!}--}}
                         {{--{!! Form::text('title', null, ['class' => 'form-control']) !!}--}}
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary active mt-3" type="button" onclick="window.location='{{url('profile')}}';">Back to profile</button>
                 <br><br><br>
                 {{Form::hidden('id', $userinfo['UserID'])}}
                 {!! Form::close() !!}

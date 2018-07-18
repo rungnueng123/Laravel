@@ -91,6 +91,8 @@ class MyuserController extends Controller
             );
             $userbase->where('UserID',$request->input('id'))->update($dataUpdate);
             //SELECT Last
+            $UserRecord = Userbase::where('UserID',$request->input('id'))->first();
+            $request->session()->put('userinfo', $UserRecord);//SESSION
             return redirect('/editprofile');
         }
     }
