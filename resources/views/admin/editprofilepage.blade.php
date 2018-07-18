@@ -1,4 +1,4 @@
-@extends('admin.layout.profile')
+@extends('admin.layout.editprofile')
 
 @section('toolbar')
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -97,10 +97,10 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Live Search ...">
                     <span class="input-group-btn">
-                                                    <button class="btn btn-primary btn-sm text-muted" type="button">
-                                                        <i class="fa fa-search"></i>
-                                                    </button>
-                                                </span>
+                                                <button class="btn btn-primary btn-sm text-muted" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
                 </div>
             </form>
             <!-- /.main-search -->                                </div>
@@ -123,7 +123,7 @@
             </div>
             <div class="user-wrapper bg-dark">
                 <a class="user-link" href="">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{url('am/public/assets/img/user.gif')}}">
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.gif">
                     <span class="label label-danger user-label">16</span>
                 </a>
 
@@ -265,8 +265,8 @@
                 <a href="javascript:;">
                     <i class="fa fa-pencil"></i>
                     <span class="link-title">
-                                        Forms
-                                  </span>
+                                    Forms
+                        	  </span>
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="collapse">
@@ -392,8 +392,8 @@
                 <a href="javascript:;">
                     <i class="fa fa-code"></i>
                     <span class="link-title">
-                                    Unlimited Level Menu
-                                    </span>
+                            	Unlimited Level Menu
+                            	</span>
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="collapse">
@@ -447,31 +447,44 @@
 @section('content')
     <div class="outer">
         <div class="inner bg-light lter">
-            <div class="col-lg-8">
-                {!! Form::open(['url' => '/saverefcar']) !!}
-                <div class="container">
-                    <h1>Profile</h1>
-                    <p class="text-muted">UserID : {{$userinfo['UserID']}}</p>
-                    <p class="text-muted">Username : {{$userinfo['Username']}}</p>
-                    <p class="text-muted">Email : {{$userinfo['Email']}}</p>
-                    <p class="text-muted">Birthday : {{$userinfo['Birth']}}</p>
-                    <p class="text-muted">Gender : <?php if ($userinfo['Gender']==1){echo 'Male';
-                        }else{
-                        echo 'Female';}?></p>
-                    <?php foreach($carUserListData as $key=>$val){
-                        ?>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="carList[]" <?php echo $val['Checked'];?> value="<?php echo $val['carID'];?>">
-                                <?php echo $val['car'];?>
-                            </label>
-                        </div>
-                    <?php }?>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button class="btn btn-primary active mt-3" type="button" onclick="window.location='{{url('editprofile')}}';">Edit</button>
-                    {{--<button type="button" class="btn btn-secondary">Edit</button>--}}
-                    <br><br><br>
-                </div>
+            <div class="col-lg-12">
+                {!! Form::open(['url' => '/saveprofile']) !!}
+                <h1>Edit profile</h1>
+                    <div class="form-group">
+                        <label class="control-label col-sm-1" for="pwd">Username : </label>
+                        {{Form::text('Username', $userinfo['Username'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-1" for="pwd">Password : </label>
+                        {{Form::text('Password', $userinfo['Password'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-1" for="pwd">Email : </label>
+                        {{Form::text('Email', $userinfo['Email'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-1" for="pwd">Birth : </label>
+                        {{Form::date('Birth', $userinfo['Birth'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-1" for="pwd">Gender : </label>
+
+                        <select name="Gender" class="form-control" id="">
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                        </select>
+                    </div>
+                        {{--<div class="form-group">--}}
+                            {{--<label class="control-label col-sm-2" for="pwd">Password:</label>--}}
+                            {{--<div class="col-sm-10">--}}
+                                {{--<input type="text" class="form-control" id="pwd" placeholder="Enter password" name="pwd">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--{!! Form::label('', 'Title:', ['class' => 'control-label']) !!}--}}
+                        {{--{!! Form::text('title', null, ['class' => 'form-control']) !!}--}}
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br><br><br>
+                {{Form::hidden('id', $userinfo['UserID'])}}
                 {!! Form::close() !!}
             </div>
         </div>
