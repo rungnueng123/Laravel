@@ -454,12 +454,13 @@
                     <p class="text-muted">UserID : {{$userinfo['UserID']}}</p>
                     <p class="text-muted">Username : {{$userinfo['Username']}}</p>
                     <p class="text-muted">Email : {{$userinfo['Email']}}</p>
-                    <p class="text-muted">Birthday : {{$userinfo['Birth']}}</p>
+                    <p class="text-muted">Birthday : {{$userinfo['BirthShow']}}</p>
                     <p class="text-muted">Gender : <?php if ($userinfo['Gender'] == 0) {
                             echo 'Male';
                         } else {
                             echo 'Female';
                         }?></p>
+                    <h2>Car</h2>
                     <?php foreach($carUserListData as $key=>$val){
                     ?>
                     <div class="checkbox">

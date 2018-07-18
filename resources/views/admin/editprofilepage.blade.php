@@ -463,7 +463,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-1" for="pwd">Birth : </label>
-                    {{Form::date('Birth', $userinfo['Birth'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                    {{Form::date('Birth', $userinfo['BirthShow'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-1" for="pwd">Gender : </label>
@@ -479,6 +479,7 @@
                         </option>
                     </select>
                 </div>
+                <h2>Car</h2>
                 <?php foreach($carUserListData as $key=>$val){
                 ?>
                 <div class="checkbox">

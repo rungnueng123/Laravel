@@ -38,14 +38,14 @@ class MyuserController extends Controller
         //Check Found User
         $userRecord = Userbase::where('Username', $Username)
             ->where('Password', $Password)->first();
+        $userRecord['BirthShow'] = substr($userRecord['Birth'],0,10);
+//        dd($userRecord);
         if (!empty($userRecord)) {
             $request->session()->put('userinfo', $userRecord);//SESSION
             return redirect('/profile');
         } else {
             return view('admin.loginpage');
         }
-//        dd($userRecord);
-
     }
 
     public function profilepage(Request $request)
@@ -117,6 +117,8 @@ class MyuserController extends Controller
     public function editprofile(Request $request)
     {
         $userinfo = $request->session()->get('userinfo');
+        //SET DATE
+//        $userinfo['Birth'] = substr($userinfo['Birth'],0,10);
         $carList = car::all();
         $carUserListData = array();
         foreach ($carList as $key => $val) {
