@@ -108,7 +108,7 @@
         <div class="main-bar">
             <h3>
                 <i class="fa fa-home"></i>&nbsp;
-                Metis
+                Metissss
             </h3>
         </div>
         <!-- /.main-bar -->
