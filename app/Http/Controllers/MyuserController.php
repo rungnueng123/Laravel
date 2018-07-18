@@ -32,15 +32,15 @@ class MyuserController extends Controller
        $Username = $request->input('Username');
        $Password = $request->input('Password');
        //Check Found User
-        $UserRecord = Userbase::where('Username',$Username)
+        $userRecord = Userbase::where('Username',$Username)
             ->where('Password',$Password)->first();
-        if(!empty($UserRecord)){
-            $request->session()->put('userinfo', $UserRecord);//SESSION
+        if(!empty($userRecord)){
+            $request->session()->put('userinfo', $userRecord);//SESSION
             return redirect('/profile');
         }else{
             return view('admin.loginpage');
         }
-//        dd($UserRecord);
+//        dd($userRecord);
 
     }
 
@@ -75,11 +75,21 @@ class MyuserController extends Controller
             $userCar->CarID = $val;
             $userCar->save();
         }
+        return redirect('/profile');
     }
 
     public function saveprofile(Request $request){
         if(!empty($request->input('id'))){
             //EDIT
+//            $userinfo = $request->session()->get('userinfo');
+//            userCar::where('userID',$userinfo['UserID'])->delete();
+//            foreach($request->input('carList') as $key=>$val){
+//                $userCar = new userCar;
+//                $userCar->userID = $userinfo['UserID'];
+//                $userCar->CarID = $val;
+//                $userCar->save();
+//            }
+            $this->saverefcar($request);
             $userbase = new Userbase;
 
             $dataUpdate = array(
@@ -91,15 +101,27 @@ class MyuserController extends Controller
             );
             $userbase->where('UserID',$request->input('id'))->update($dataUpdate);
             //SELECT Last
-            $UserRecord = Userbase::where('UserID',$request->input('id'))->first();
-            $request->session()->put('userinfo', $UserRecord);//SESSION
+            $userRecord = Userbase::where('UserID',$request->input('id'))->first();
+            $request->session()->put('userinfo', $userRecord);//SESSION
             return redirect('/editprofile');
         }
     }
 
     public function editprofile(Request $request){
        $userinfo = $request->session()->get('userinfo');
+       $carList = car::all();
+        $carUserListData = array();
+        foreach($carList as $key=>$val){
+            $carUserListData[$key]['car'] = $val['car'];
+            $carUserListData[$key]['carID'] = $val['carID'];
+            $carUserRecord = userCar::where('userID',$userinfo['UserID'])->where('carID',$val['carID'])->first();
+            $carUserListData[$key]['Checked'] = '';
+            if(!empty($carUserRecord)){
+                $carUserListData[$key]['Checked'] = 'checked';
+            }
+        }
        $data = array(
+           'carUserListData'=>$carUserListData,
            'userinfo'=>$userinfo
        );
 //       dd($userinfo);

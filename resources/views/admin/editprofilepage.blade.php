@@ -470,18 +470,19 @@
                         <label class="control-label col-sm-1" for="pwd">Gender : </label>
 
                         <select name="Gender" class="form-control" id="">
-                            <option value="0">Male</option>
-                            <option value="1">Female</option>
+                            <option value="0" <?php if($userinfo['Gender'] == '0'){echo "selected";}?>>Male</option>
+                            <option value="1"  <?php if($userinfo['Gender'] == '1'){echo "selected";}?>>Female</option>
                         </select>
                     </div>
-                        {{--<div class="form-group">--}}
-                            {{--<label class="control-label col-sm-2" for="pwd">Password:</label>--}}
-                            {{--<div class="col-sm-10">--}}
-                                {{--<input type="text" class="form-control" id="pwd" placeholder="Enter password" name="pwd">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--{!! Form::label('', 'Title:', ['class' => 'control-label']) !!}--}}
-                        {{--{!! Form::text('title', null, ['class' => 'form-control']) !!}--}}
+                    <?php foreach($carUserListData as $key=>$val){
+                    ?>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="carList[]" <?php echo $val['Checked'];?> value="<?php echo $val['carID'];?>">
+                            <?php echo $val['car'];?>
+                        </label>
+                    </div>
+                    <?php }?>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button class="btn btn-primary active mt-3" type="button" onclick="window.location='{{url('profile')}}';">Back to profile</button>
                 <br><br><br>

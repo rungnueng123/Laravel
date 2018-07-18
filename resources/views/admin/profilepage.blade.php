@@ -108,7 +108,7 @@
         <div class="main-bar">
             <h3>
                 <i class="fa fa-home"></i>&nbsp;
-                Metis
+                Metissss
             </h3>
         </div>
         <!-- /.main-bar -->
@@ -455,7 +455,7 @@
                     <p class="text-muted">Username : {{$userinfo['Username']}}</p>
                     <p class="text-muted">Email : {{$userinfo['Email']}}</p>
                     <p class="text-muted">Birthday : {{$userinfo['Birth']}}</p>
-                    <p class="text-muted">Gender : <?php if ($userinfo['Gender']==1){echo 'Male';
+                    <p class="text-muted">Gender : <?php if ($userinfo['Gender']==0){echo 'Male';
                         }else{
                         echo 'Female';}?></p>
                     <?php foreach($carUserListData as $key=>$val){
