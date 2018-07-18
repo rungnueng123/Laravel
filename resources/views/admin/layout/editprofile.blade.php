@@ -13,8 +13,8 @@
     <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
     <meta name="author" content="">
 
-    <meta name="msapplication-TileColor" content="#5bc0de" />
-    <meta name="msapplication-TileImage" content="assets/img/metis-tile.png" />
+    <meta name="msapplication-TileColor" content="#5bc0de"/>
+    <meta name="msapplication-TileImage" content="assets/img/metis-tile.png"/>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{url('am/public/assets/lib/bootstrap/css/bootstrap.css')}}">
@@ -33,7 +33,6 @@
 
     <!-- animate.css stylesheet -->
     <link rel="stylesheet" href="{{url('am/public/assets/lib/animate.css/animate.css')}}">
-
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -61,17 +60,17 @@
 <div class="bg-dark dk" id="wrap">
     <div id="top">
         <!-- .navbar -->
-        @yield('toolbar')
-        <!-- /.navbar -->
-        @yield('head')
-        <!-- /.head -->
+    @yield('toolbar')
+    <!-- /.navbar -->
+    @yield('head')
+    <!-- /.head -->
     </div>
     <!-- /#top -->
-        @yield('menu')
-    <!-- /#left -->
+@yield('menu')
+<!-- /#left -->
     <div id="content">
-        @yield('content')
-        <!-- /.outer -->
+    @yield('content')
+    <!-- /.outer -->
     </div>
     <!-- /#content -->
 

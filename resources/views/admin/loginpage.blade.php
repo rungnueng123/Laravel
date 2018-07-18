@@ -46,8 +46,11 @@
                 <div class="card-body text-center">
                     <div>
                         <h2>Sign up</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <button class="btn btn-primary active mt-3" type="button" onclick="window.location='{{url('register')}}';">Register Now!</button>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                        <button class="btn btn-primary active mt-3" type="button"
+                                onclick="window.location='{{url('register')}}';">Register Now!
+                        </button>
                     </div>
                 </div>
             </div>
