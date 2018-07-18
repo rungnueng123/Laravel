@@ -14,10 +14,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="{{url('am/public/index.html')}}" class="navbar-brand"><img src="{{url('am/public/assets/img/logo.png')}}" alt=""></a>
+                <a href="{{url('am/public/index.html')}}" class="navbar-brand"><img
+                            src="{{url('am/public/assets/img/logo.png')}}" alt=""></a>
 
             </header>
-
 
 
             <div class="topnav">
@@ -45,7 +45,8 @@
                     </a>
                 </div>
                 <div class="btn-group">
-                    <a href="{{url('am/public/login.html')}}" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom"
+                    <a href="{{url('am/public/login.html')}}" data-toggle="tooltip" data-original-title="Logout"
+                       data-placement="bottom"
                        class="btn btn-metis-1 btn-sm">
                         <i class="fa fa-power-off"></i>
                     </a>
@@ -61,8 +62,6 @@
                 </div>
 
             </div>
-
-
 
 
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -123,7 +122,8 @@
             </div>
             <div class="user-wrapper bg-dark">
                 <a class="user-link" href="">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{url('am/public/assets/img/user.gif')}}">
+                    <img class="media-object img-thumbnail user-img" alt="User Picture"
+                         src="{{url('am/public/assets/img/user.gif')}}">
                     <span class="label label-danger user-label">16</span>
                 </a>
 
@@ -299,7 +299,7 @@
                     <i class="fa fa-font"></i>
                     <span class="link-title">
                                         Typography
-                                      </span>  </a>
+                                      </span> </a>
             </li>
             <li>
                 <a href="{{url('am/public/maps.html')}}">
@@ -398,43 +398,43 @@
                 </a>
                 <ul class="collapse">
                     <li>
-                        <a href="javascript:;">Level 1  <span class="fa arrow"></span>  </a>
+                        <a href="javascript:;">Level 1 <span class="fa arrow"></span> </a>
                         <ul class="collapse">
-                            <li> <a href="javascript:;">Level 2</a>  </li>
-                            <li> <a href="javascript:;">Level 2</a>  </li>
+                            <li><a href="javascript:;">Level 2</a></li>
+                            <li><a href="javascript:;">Level 2</a></li>
                             <li>
-                                <a href="javascript:;">Level 2  <span class="fa arrow"></span>  </a>
+                                <a href="javascript:;">Level 2 <span class="fa arrow"></span> </a>
                                 <ul class="collapse">
-                                    <li> <a href="javascript:;">Level 3</a>  </li>
-                                    <li> <a href="javascript:;">Level 3</a>  </li>
+                                    <li><a href="javascript:;">Level 3</a></li>
+                                    <li><a href="javascript:;">Level 3</a></li>
                                     <li>
-                                        <a href="javascript:;">Level 3  <span class="fa arrow"></span>  </a>
+                                        <a href="javascript:;">Level 3 <span class="fa arrow"></span> </a>
                                         <ul class="collapse">
-                                            <li> <a href="javascript:;">Level 4</a>  </li>
-                                            <li> <a href="javascript:;">Level 4</a>  </li>
+                                            <li><a href="javascript:;">Level 4</a></li>
+                                            <li><a href="javascript:;">Level 4</a></li>
                                             <li>
-                                                <a href="javascript:;">Level 4  <span class="fa arrow"></span>  </a>
+                                                <a href="javascript:;">Level 4 <span class="fa arrow"></span> </a>
                                                 <ul class="collapse">
-                                                    <li> <a href="javascript:;">Level 5</a>  </li>
-                                                    <li> <a href="javascript:;">Level 5</a>  </li>
-                                                    <li> <a href="javascript:;">Level 5</a>  </li>
+                                                    <li><a href="javascript:;">Level 5</a></li>
+                                                    <li><a href="javascript:;">Level 5</a></li>
+                                                    <li><a href="javascript:;">Level 5</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li> <a href="javascript:;">Level 4</a>  </li>
+                                    <li><a href="javascript:;">Level 4</a></li>
                                 </ul>
                             </li>
-                            <li> <a href="javascript:;">Level 2</a>  </li>
+                            <li><a href="javascript:;">Level 2</a></li>
                         </ul>
                     </li>
-                    <li> <a href="javascript:;">Level 1</a>  </li>
+                    <li><a href="javascript:;">Level 1</a></li>
                     <li>
-                        <a href="javascript:;">Level 1  <span class="fa arrow"></span>  </a>
+                        <a href="javascript:;">Level 1 <span class="fa arrow"></span> </a>
                         <ul class="collapse">
-                            <li> <a href="javascript:;">Level 2</a>  </li>
-                            <li> <a href="javascript:;">Level 2</a>  </li>
-                            <li> <a href="javascript:;">Level 2</a>  </li>
+                            <li><a href="javascript:;">Level 2</a></li>
+                            <li><a href="javascript:;">Level 2</a></li>
+                            <li><a href="javascript:;">Level 2</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -455,20 +455,25 @@
                     <p class="text-muted">Username : {{$userinfo['Username']}}</p>
                     <p class="text-muted">Email : {{$userinfo['Email']}}</p>
                     <p class="text-muted">Birthday : {{$userinfo['Birth']}}</p>
-                    <p class="text-muted">Gender : <?php if ($userinfo['Gender']==0){echo 'Male';
-                        }else{
-                        echo 'Female';}?></p>
+                    <p class="text-muted">Gender : <?php if ($userinfo['Gender'] == 0) {
+                            echo 'Male';
+                        } else {
+                            echo 'Female';
+                        }?></p>
                     <?php foreach($carUserListData as $key=>$val){
-                        ?>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="carList[]" <?php echo $val['Checked'];?> value="<?php echo $val['carID'];?>">
-                                <?php echo $val['car'];?>
-                            </label>
-                        </div>
+                    ?>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="carList[]"
+                                   <?php echo $val['Checked'];?> value="<?php echo $val['carID'];?>">
+                            <?php echo $val['car'];?>
+                        </label>
+                    </div>
                     <?php }?>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <button class="btn btn-primary active mt-3" type="button" onclick="window.location='{{url('editprofile')}}';">Edit</button>
+                    <button class="btn btn-primary active mt-3" type="button"
+                            onclick="window.location='{{url('editprofile')}}';">Edit
+                    </button>
                     {{--<button type="button" class="btn btn-secondary">Edit</button>--}}
                     <br><br><br>
                 </div>

@@ -9,15 +9,18 @@ use App\userCar;
 
 class MyuserController extends Controller
 {
-   public function registerpage(){
-       return view('admin.registerpage');
-   }
+    public function registerpage()
+    {
+        return view('admin.registerpage');
+    }
 
-   public function loginpage(){
-       return view('admin.loginpage');
-   }
+    public function loginpage()
+    {
+        return view('admin.loginpage');
+    }
 
-    public function saveregisterpage(Request $request){
+    public function saveregisterpage(Request $request)
+    {
         $userbase = new Userbase;
         $userbase->Username = $request->input('Username');
         $userbase->Password = $request->input('Password');
@@ -28,48 +31,51 @@ class MyuserController extends Controller
         return redirect('/login');
     }
 
-    public function checklogin(Request $request){
-       $Username = $request->input('Username');
-       $Password = $request->input('Password');
-       //Check Found User
-        $userRecord = Userbase::where('Username',$Username)
-            ->where('Password',$Password)->first();
-        if(!empty($userRecord)){
+    public function checklogin(Request $request)
+    {
+        $Username = $request->input('Username');
+        $Password = $request->input('Password');
+        //Check Found User
+        $userRecord = Userbase::where('Username', $Username)
+            ->where('Password', $Password)->first();
+        if (!empty($userRecord)) {
             $request->session()->put('userinfo', $userRecord);//SESSION
             return redirect('/profile');
-        }else{
+        } else {
             return view('admin.loginpage');
         }
 //        dd($userRecord);
 
     }
 
-    public function profilepage(Request $request){
+    public function profilepage(Request $request)
+    {
         $userinfo = $request->session()->get('userinfo');
         $carList = car::all();
         $carUserListData = array();
-        foreach($carList as $key=>$val){
+        foreach ($carList as $key => $val) {
             $carUserListData[$key]['car'] = $val['car'];
             $carUserListData[$key]['carID'] = $val['carID'];
-            $carUserRecord = userCar::where('userID',$userinfo['UserID'])->where('carID',$val['carID'])->first();
+            $carUserRecord = userCar::where('userID', $userinfo['UserID'])->where('carID', $val['carID'])->first();
             $carUserListData[$key]['Checked'] = '';
-            if(!empty($carUserRecord)){
+            if (!empty($carUserRecord)) {
                 $carUserListData[$key]['Checked'] = 'checked';
             }
         }
         $data = array(
-            'carUserListData'=>$carUserListData,
-            'userinfo'=>$userinfo
+            'carUserListData' => $carUserListData,
+            'userinfo' => $userinfo
         );
         return view('admin.profilepage')->with($data);
     }
 
-    public function saverefcar(Request $request){
+    public function saverefcar(Request $request)
+    {
         $userinfo = $request->session()->get('userinfo');
         //DELETE
-        userCar::where('userID',$userinfo['UserID'])->delete();
+        userCar::where('userID', $userinfo['UserID'])->delete();
         /// SAVE CarRef
-        foreach($request->input('carList') as $key=>$val){
+        foreach ($request->input('carList') as $key => $val) {
             $userCar = new userCar;
             $userCar->userID = $userinfo['UserID'];
             $userCar->CarID = $val;
@@ -78,8 +84,9 @@ class MyuserController extends Controller
         return redirect('/profile');
     }
 
-    public function saveprofile(Request $request){
-        if(!empty($request->input('id'))){
+    public function saveprofile(Request $request)
+    {
+        if (!empty($request->input('id'))) {
             //EDIT
 //            $userinfo = $request->session()->get('userinfo');
 //            userCar::where('userID',$userinfo['UserID'])->delete();
@@ -93,37 +100,38 @@ class MyuserController extends Controller
             $userbase = new Userbase;
 
             $dataUpdate = array(
-                'Username'=>$request->input('Username'),
-                'Password'=>$request->input('Password'),
-                'Email'=>$request->input('Email'),
-                'Birth'=>$request->input('Birth'),
-                'Gender'=>$request->input('Gender'),
+                'Username' => $request->input('Username'),
+                'Password' => $request->input('Password'),
+                'Email' => $request->input('Email'),
+                'Birth' => $request->input('Birth'),
+                'Gender' => $request->input('Gender'),
             );
-            $userbase->where('UserID',$request->input('id'))->update($dataUpdate);
+            $userbase->where('UserID', $request->input('id'))->update($dataUpdate);
             //SELECT Last
-            $userRecord = Userbase::where('UserID',$request->input('id'))->first();
+            $userRecord = Userbase::where('UserID', $request->input('id'))->first();
             $request->session()->put('userinfo', $userRecord);//SESSION
             return redirect('/editprofile');
         }
     }
 
-    public function editprofile(Request $request){
-       $userinfo = $request->session()->get('userinfo');
-       $carList = car::all();
+    public function editprofile(Request $request)
+    {
+        $userinfo = $request->session()->get('userinfo');
+        $carList = car::all();
         $carUserListData = array();
-        foreach($carList as $key=>$val){
+        foreach ($carList as $key => $val) {
             $carUserListData[$key]['car'] = $val['car'];
             $carUserListData[$key]['carID'] = $val['carID'];
-            $carUserRecord = userCar::where('userID',$userinfo['UserID'])->where('carID',$val['carID'])->first();
+            $carUserRecord = userCar::where('userID', $userinfo['UserID'])->where('carID', $val['carID'])->first();
             $carUserListData[$key]['Checked'] = '';
-            if(!empty($carUserRecord)){
+            if (!empty($carUserRecord)) {
                 $carUserListData[$key]['Checked'] = 'checked';
             }
         }
-       $data = array(
-           'carUserListData'=>$carUserListData,
-           'userinfo'=>$userinfo
-       );
+        $data = array(
+            'carUserListData' => $carUserListData,
+            'userinfo' => $userinfo
+        );
 //       dd($userinfo);
         return view('admin.editprofilepage')->with($data);
     }

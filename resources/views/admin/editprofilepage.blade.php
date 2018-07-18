@@ -14,10 +14,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="{{url('am/public/index.html')}}" class="navbar-brand"><img src="{{url('am/public/assets/img/logo.png')}}" alt=""></a>
+                <a href="{{url('am/public/index.html')}}" class="navbar-brand"><img
+                            src="{{url('am/public/assets/img/logo.png')}}" alt=""></a>
 
             </header>
-
 
 
             <div class="topnav">
@@ -45,7 +45,8 @@
                     </a>
                 </div>
                 <div class="btn-group">
-                    <a href="{{url('am/public/login.html')}}" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom"
+                    <a href="{{url('am/public/login.html')}}" data-toggle="tooltip" data-original-title="Logout"
+                       data-placement="bottom"
                        class="btn btn-metis-1 btn-sm">
                         <i class="fa fa-power-off"></i>
                     </a>
@@ -61,8 +62,6 @@
                 </div>
 
             </div>
-
-
 
 
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -299,7 +298,7 @@
                     <i class="fa fa-font"></i>
                     <span class="link-title">
                                         Typography
-                                      </span>  </a>
+                                      </span> </a>
             </li>
             <li>
                 <a href="{{url('am/public/maps.html')}}">
@@ -398,43 +397,43 @@
                 </a>
                 <ul class="collapse">
                     <li>
-                        <a href="javascript:;">Level 1  <span class="fa arrow"></span>  </a>
+                        <a href="javascript:;">Level 1 <span class="fa arrow"></span> </a>
                         <ul class="collapse">
-                            <li> <a href="javascript:;">Level 2</a>  </li>
-                            <li> <a href="javascript:;">Level 2</a>  </li>
+                            <li><a href="javascript:;">Level 2</a></li>
+                            <li><a href="javascript:;">Level 2</a></li>
                             <li>
-                                <a href="javascript:;">Level 2  <span class="fa arrow"></span>  </a>
+                                <a href="javascript:;">Level 2 <span class="fa arrow"></span> </a>
                                 <ul class="collapse">
-                                    <li> <a href="javascript:;">Level 3</a>  </li>
-                                    <li> <a href="javascript:;">Level 3</a>  </li>
+                                    <li><a href="javascript:;">Level 3</a></li>
+                                    <li><a href="javascript:;">Level 3</a></li>
                                     <li>
-                                        <a href="javascript:;">Level 3  <span class="fa arrow"></span>  </a>
+                                        <a href="javascript:;">Level 3 <span class="fa arrow"></span> </a>
                                         <ul class="collapse">
-                                            <li> <a href="javascript:;">Level 4</a>  </li>
-                                            <li> <a href="javascript:;">Level 4</a>  </li>
+                                            <li><a href="javascript:;">Level 4</a></li>
+                                            <li><a href="javascript:;">Level 4</a></li>
                                             <li>
-                                                <a href="javascript:;">Level 4  <span class="fa arrow"></span>  </a>
+                                                <a href="javascript:;">Level 4 <span class="fa arrow"></span> </a>
                                                 <ul class="collapse">
-                                                    <li> <a href="javascript:;">Level 5</a>  </li>
-                                                    <li> <a href="javascript:;">Level 5</a>  </li>
-                                                    <li> <a href="javascript:;">Level 5</a>  </li>
+                                                    <li><a href="javascript:;">Level 5</a></li>
+                                                    <li><a href="javascript:;">Level 5</a></li>
+                                                    <li><a href="javascript:;">Level 5</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li> <a href="javascript:;">Level 4</a>  </li>
+                                    <li><a href="javascript:;">Level 4</a></li>
                                 </ul>
                             </li>
-                            <li> <a href="javascript:;">Level 2</a>  </li>
+                            <li><a href="javascript:;">Level 2</a></li>
                         </ul>
                     </li>
-                    <li> <a href="javascript:;">Level 1</a>  </li>
+                    <li><a href="javascript:;">Level 1</a></li>
                     <li>
-                        <a href="javascript:;">Level 1  <span class="fa arrow"></span>  </a>
+                        <a href="javascript:;">Level 1 <span class="fa arrow"></span> </a>
                         <ul class="collapse">
-                            <li> <a href="javascript:;">Level 2</a>  </li>
-                            <li> <a href="javascript:;">Level 2</a>  </li>
-                            <li> <a href="javascript:;">Level 2</a>  </li>
+                            <li><a href="javascript:;">Level 2</a></li>
+                            <li><a href="javascript:;">Level 2</a></li>
+                            <li><a href="javascript:;">Level 2</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -450,41 +449,50 @@
             <div class="col-lg-12">
                 {!! Form::open(['url' => '/saveprofile']) !!}
                 <h1>Edit profile</h1>
-                    <div class="form-group">
-                        <label class="control-label col-sm-1" for="pwd">Username : </label>
-                        {{Form::text('Username', $userinfo['Username'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-1" for="pwd">Password : </label>
-                        {{Form::text('Password', $userinfo['Password'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-1" for="pwd">Email : </label>
-                        {{Form::text('Email', $userinfo['Email'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-1" for="pwd">Birth : </label>
-                        {{Form::date('Birth', $userinfo['Birth'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-1" for="pwd">Gender : </label>
+                <div class="form-group">
+                    <label class="control-label col-sm-1" for="pwd">Username : </label>
+                    {{Form::text('Username', $userinfo['Username'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-1" for="pwd">Password : </label>
+                    {{Form::text('Password', $userinfo['Password'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-1" for="pwd">Email : </label>
+                    {{Form::text('Email', $userinfo['Email'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-1" for="pwd">Birth : </label>
+                    {{Form::date('Birth', $userinfo['Birth'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-1" for="pwd">Gender : </label>
 
-                        <select name="Gender" class="form-control" id="">
-                            <option value="0" <?php if($userinfo['Gender'] == '0'){echo "selected";}?>>Male</option>
-                            <option value="1"  <?php if($userinfo['Gender'] == '1'){echo "selected";}?>>Female</option>
-                        </select>
-                    </div>
-                    <?php foreach($carUserListData as $key=>$val){
-                    ?>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="carList[]" <?php echo $val['Checked'];?> value="<?php echo $val['carID'];?>">
-                            <?php echo $val['car'];?>
-                        </label>
-                    </div>
-                    <?php }?>
+                    <select name="Gender" class="form-control" id="">
+                        <option value="0" <?php if ($userinfo['Gender'] == '0') {
+                            echo "selected";
+                        }?>>Male
+                        </option>
+                        <option value="1" <?php if ($userinfo['Gender'] == '1') {
+                            echo "selected";
+                        }?>>Female
+                        </option>
+                    </select>
+                </div>
+                <?php foreach($carUserListData as $key=>$val){
+                ?>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="carList[]"
+                               <?php echo $val['Checked'];?> value="<?php echo $val['carID'];?>">
+                        <?php echo $val['car'];?>
+                    </label>
+                </div>
+                <?php }?>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <button class="btn btn-primary active mt-3" type="button" onclick="window.location='{{url('profile')}}';">Back to profile</button>
+                <button class="btn btn-primary active mt-3" type="button"
+                        onclick="window.location='{{url('profile')}}';">Back to profile
+                </button>
                 <br><br><br>
                 {{Form::hidden('id', $userinfo['UserID'])}}
                 {!! Form::close() !!}

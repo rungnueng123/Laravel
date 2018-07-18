@@ -57,7 +57,9 @@
                     </select>
                 </div>
                 <button class="btn btn-block btn-success" type="submit">Create Account</button>
-                <button class="btn btn-block btn-back-login" type="button" onclick="window.location='{{url('login')}}';">Back to Login</button>
+                <button class="btn btn-block btn-back-login" type="button"
+                        onclick="window.location='{{url('login')}}';">Back to Login
+                </button>
             </div>
             <div class="card-footer p-4">
                 <div class="row">
