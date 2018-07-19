@@ -450,45 +450,36 @@
             <div class="col-lg-8">
                 {!! Form::open(['url' => '/saverefcar']) !!}
                 <div class="container">
-                    <h1>Profile</h1>
-                    <p class="text-muted">UserID : {{$userinfo['UserID']}}</p>
-                    <p class="text-muted">Username : {{$userinfo['Username']}}</p>
-                    <p class="text-muted">Email : {{$userinfo['Email']}}</p>
-                    <p class="text-muted">Birthday : {{$userinfo['BirthShow']}}</p>
-                    <p class="text-muted">Gender : <?php if ($userinfo['Gender'] == 0) {
-                            echo 'Male';
-                        } else {
-                            echo 'Female';
-                        }?></p>
-                    <h2>Car</h2>
-                    <?php foreach($carUserListData as $key=>$val){
-                    ?>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="carList[]"
-                                   <?php echo $val['Checked'];?> value="<?php echo $val['carID'];?>">
-                            <?php echo $val['car'];?>
-                        </label>
+                    <h1>Bank</h1>
+                    <div class="container">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>bankAccountID</th>
+                                <th>bankAccountNo</th>
+                                <th>bankBranch</th>
+                                <th>bankName</th>
+                                <th>bankAccountName</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <?php foreach ($bankListData as $key => $val) {
+                                ?>
+                                <tr>
+                                    <td>{{$val['bankAccountID']}}</td>
+                                    <td>{{$val['bankAccountNo']}}</td>
+                                    <td>{{$val['bankBranch']}}</td>
+                                    <td>{{$val['bankName']}}</td>
+                                    <td>{{$val['bankAccountName']}}</td>
+                                </tr>
+                            <?php }?>
+                            <tr>
+
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <?php }?>
-                    <h2>Company</h2>
-                    <?php foreach($companyListData as $key=>$val){
-                    if (!empty($val['Company'])){?>
-                    <div class="text-muted">
-                        <label>
-                            <p><?php echo $val['Company'];?></p>
-                        </label>
-                        <button class="btn btn-primary active mt-3" type="button" class="btn btn-primary"
-                                onclick="window.location='{{url('editBank')}}'">Bank
-                        </button>
-                    </div>
-                    <?php }?>
-                    <?php }?>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button class="btn btn-primary active mt-3" type="button"
-                            onclick="window.location='{{url('editprofile')}}';">Edit
-                    </button>
-                    {{--<button type="button" class="btn btn-secondary">Edit</button>--}}
                     <br><br><br>
                 </div>
                 {!! Form::close() !!}

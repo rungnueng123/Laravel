@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\bankAccount;
 use App\car;
 use Illuminate\Http\Request;
 use App\Userbase;
 use App\userCar;
+use App\UserCompany;
+use App\Company;
 
 class MyuserController extends Controller
 {
@@ -38,7 +41,7 @@ class MyuserController extends Controller
         //Check Found User
         $userRecord = Userbase::where('Username', $Username)
             ->where('Password', $Password)->first();
-        $userRecord['BirthShow'] = substr($userRecord['Birth'],0,10);
+        $userRecord['BirthShow'] = substr($userRecord['Birth'], 0, 10);
 //        dd($userRecord);
         if (!empty($userRecord)) {
             $request->session()->put('userinfo', $userRecord);//SESSION
@@ -52,7 +55,10 @@ class MyuserController extends Controller
     {
         $userinfo = $request->session()->get('userinfo');
         $carList = car::all();
+        $companyList = Company::all();
         $carUserListData = array();
+        $companyListData = array();
+//        dd($companyList);
         foreach ($carList as $key => $val) {
             $carUserListData[$key]['car'] = $val['car'];
             $carUserListData[$key]['carID'] = $val['carID'];
@@ -62,7 +68,17 @@ class MyuserController extends Controller
                 $carUserListData[$key]['Checked'] = 'checked';
             }
         }
+        foreach ($companyList as $key => $val) {
+            $companyListData[$key]['Company'] = $val['Company'];
+            $companyListData[$key]['CompanyID'] = $val['CompanyID'];
+            $companyRecord = UserCompany::where('userID', $userinfo['UserID'])->where('companyID', $val['CompanyID'])->first();
+            $companyListData[$key]['Company'] = '';
+            if (!empty($companyRecord)) {
+                $companyListData[$key]['Company'] = $val['Company'];
+            }
+        }
         $data = array(
+            'companyListData' => $companyListData,
             'carUserListData' => $carUserListData,
             'userinfo' => $userinfo
         );
@@ -84,6 +100,21 @@ class MyuserController extends Controller
         return redirect('/profile');
     }
 
+    public function saverefcompany(Request $request)
+    {
+        $userinfo = $request->session()->get('userinfo');
+        //DELETE
+        UserCompany::where('userID', $userinfo['UserID'])->delete();
+        /// SAVE CarRef
+        foreach ($request->input('companyList') as $key => $val) {
+            $UserCompany = new UserCompany;
+            $UserCompany->userID = $userinfo['UserID'];
+            $UserCompany->CompanyID = $val;
+            $UserCompany->save();
+        }
+        return redirect('/profile');
+    }
+
     public function saveprofile(Request $request)
     {
         if (!empty($request->input('id'))) {
@@ -97,6 +128,7 @@ class MyuserController extends Controller
 //                $userCar->save();
 //            }
             $this->saverefcar($request);
+            $this->saverefcompany($request);
             $userbase = new Userbase;
 
             $dataUpdate = array(
@@ -124,18 +156,58 @@ class MyuserController extends Controller
         foreach ($carList as $key => $val) {
             $carUserListData[$key]['car'] = $val['car'];
             $carUserListData[$key]['carID'] = $val['carID'];
-            $carUserRecord = userCar::where('userID', $userinfo['UserID'])->where('carID', $val['carID'])->first();
+            $carUserRecord = userCar::where('userID', $userinfo['UserID'])
+                ->where('carID', $val['carID'])
+                ->first();
             $carUserListData[$key]['Checked'] = '';
             if (!empty($carUserRecord)) {
                 $carUserListData[$key]['Checked'] = 'checked';
             }
         }
+        $companyList = Company::all();
+        $companyListData = array();
+        foreach ($companyList as $key => $val) {
+            $companyListData[$key]['Company'] = $val['Company'];
+            $companyListData[$key]['CompanyID'] = $val['CompanyID'];
+            $companyRecord = UserCompany::where('userID', $userinfo['UserID'])
+                ->where('companyID', $val['CompanyID'])
+                ->first();
+            $companyListData[$key]['Checked'] = '';
+            if (!empty($companyRecord)) {
+                $companyListData[$key]['Checked'] = 'checked';
+            }
+        }
         $data = array(
+            'companyListData' => $companyListData,
             'carUserListData' => $carUserListData,
             'userinfo' => $userinfo
         );
 //       dd($userinfo);
         return view('admin.editprofilepage')->with($data);
+    }
+
+    public function editBank()
+    {
+        $bankList = bankAccount::all();
+        $bankListData = array();
+        foreach ($bankList as $key => $val) {
+            $bankListData[$key]['bankAccountID'] = $val['bankAccountID'];
+            $bankListData[$key]['bankAccountNo'] = $val['bankAccountNo'];
+            $bankListData[$key]['bankBranch'] = $val['bankBranch'];
+            $bankListData[$key]['bankName'] = $val['bankName'];
+            $bankListData[$key]['bankAccountName'] = $val['bankAccountName'];
+            $bankListRecord = bankAccount::where('bankAccountID', $val['bankAccountID'])
+                ->where('bankAccountNo', $val['bankAccountNo'])
+                ->where('bankBranch', $val['bankBranch'])
+                ->where('bankName', $val['bankName'])
+                ->where('bankAccountName', $val['bankAccountName'])
+                ->first();
+        }
+        $data = array(
+            'bankListData' => $bankListData
+        );
+//        dd($bankListData);
+        return view('admin.editBankPage')->with($data);
     }
 
 }
