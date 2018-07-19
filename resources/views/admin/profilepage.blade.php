@@ -478,15 +478,18 @@
                         <label>
                             <p><?php echo $val['Company'];?></p>
                         </label>
-                        <button class="btn btn-primary active mt-3" type="button" class="btn btn-primary"
-                                onclick="window.location='{{url('bank')}}'">Bank
-                        </button>
                     </div>
                     <?php }?>
                     <?php }?>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary active mt-3">Submit</button>
                     <button class="btn btn-primary active mt-3" type="button"
                             onclick="window.location='{{url('editprofile')}}';">Edit
+                    </button>
+                    <button class="btn btn-primary active mt-3" type="button" class="btn btn-primary"
+                            onclick="window.location='{{url('bank')}}'">Bank
+                    </button>
+                    <button class="btn btn-primary active mt-3" type="button" class="btn btn-primary"
+                            onclick="window.location='{{url('company')}}'">All Company
                     </button>
                     {{--<button type="button" class="btn btn-secondary">Edit</button>--}}
                     <br><br><br>

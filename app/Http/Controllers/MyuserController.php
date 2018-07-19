@@ -149,12 +149,20 @@ class MyuserController extends Controller
     public function saveEditBank(Request $request)
     {
         if (!empty($request->input('id'))) {
-            $bankAccount = new bankAccount;
-            $dataBankUpdate = array(
+            $bankAccount = new bankAccount();
 
+            $dataBankAccountUpdate = array(
+                'bankAccountNo' => $request->input('bankAccountNo'),
+                'bankBranch' => $request->input('bankBranch'),
+                'bankName' => $request->input('bankName'),
+                'bankAccountName' => $request->input('bankAccountName'),
             );
+            $bankAccount->where('bankAccountID', $request->input('id'))->update($dataBankAccountUpdate);
+            //SELECT LAST
+            $bankRecord = bankAccount::where('bankAccountID', $request->input('id'))->first();
+            $request->session()->put('bankRecord', $bankRecord);
+            return redirect('/bank');
         }
-        return redirect('/editBank');
     }
 
     public function editprofile(Request $request)

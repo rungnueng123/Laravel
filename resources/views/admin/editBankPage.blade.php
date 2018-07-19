@@ -447,7 +447,7 @@
     <div class="outer">
         <div class="inner bg-light lter">
             <div class="col-lg-12">
-                {!! Form::open(['url' => '/editBank']) !!}
+                {!! Form::open(['url' => '/saveEditBank']) !!}
                 <h1>Edit Bank</h1>
                 <div class="form-group">
                     <p> Bank Account No. : {!! Form::text('bankAccountNo', $bankRecord['bankAccountNo'], ['class' => 'form-control']) !!}
@@ -456,11 +456,13 @@
                         Bank Account Name : {!! Form::text('bankAccountName', $bankRecord['bankAccountName'], ['class' => 'form-control']) !!}
                     </p>
                 </div>
-                {!! Form::close() !!}
+                <button type="submit" class="btn btn-primary">Submit</button>
                 <button class="btn btn-primary active mt-3" type="button"
                         onclick="window.location='{{url('bank')}}';">Back to profile
                 </button>
                 <br><br><br>
+                {{Form::hidden('id', $bankRecord['bankAccountID'])}}
+                {!! Form::close() !!}
             </div>
         </div>
         <!-- /.inner -->
