@@ -146,6 +146,17 @@ class MyuserController extends Controller
         }
     }
 
+    public function saveEditBank(Request $request)
+    {
+        if (!empty($request->input('id'))) {
+            $bankAccount = new bankAccount;
+            $dataBankUpdate = array(
+
+            );
+        }
+        return redirect('/editBank');
+    }
+
     public function editprofile(Request $request)
     {
         $userinfo = $request->session()->get('userinfo');
@@ -208,6 +219,16 @@ class MyuserController extends Controller
         );
 //        dd($bankListData);
         return view('admin.bankPage')->with($data);
+    }
+
+    public function editBank(Request $request,$id)
+    {
+        $bankRecord = bankAccount::where('bankAccountID', $id)->first();
+        $data = array(
+            'bankRecord' => $bankRecord
+        );
+//        dd(@$bankListData);
+        return view('admin.editBankPage')->with($data);
     }
 
 }

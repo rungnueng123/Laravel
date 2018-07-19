@@ -1,4 +1,4 @@
-@extends('admin.layout.editprofile')
+@extends('admin.layout.editBank')
 
 @section('toolbar')
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -447,67 +447,20 @@
     <div class="outer">
         <div class="inner bg-light lter">
             <div class="col-lg-12">
-                {!! Form::open(['url' => '/saveprofile']) !!}
-                <h1>Edit profile</h1>
+                {!! Form::open(['url' => '/editBank']) !!}
+                <h1>Edit Bank</h1>
                 <div class="form-group">
-                    <label class="control-label col-sm-1" for="pwd">Username : </label>
-                    {{Form::text('Username', $userinfo['Username'] , ['class' => 'form-control' , 'placeholder' => 'Username'])}}
+                    <p> Bank Account No. : {!! Form::text('bankAccountNo', $bankRecord['bankAccountNo'], ['class' => 'form-control']) !!}
+                        Bank Branch : {!! Form::text('bankBranch', $bankRecord['bankBranch'], ['class' => 'form-control']) !!}
+                        Bank Name : {!! Form::text('bankName', $bankRecord['bankName'], ['class' => 'form-control']) !!}
+                        Bank Account Name : {!! Form::text('bankAccountName', $bankRecord['bankAccountName'], ['class' => 'form-control']) !!}
+                    </p>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-1" for="pwd">Password : </label>
-                    {{Form::text('Password', $userinfo['Password'] , ['class' => 'form-control' , 'placeholder' => 'Password'])}}
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-1" for="pwd">Email : </label>
-                    {{Form::text('Email', $userinfo['Email'] , ['class' => 'form-control' , 'placeholder' => 'Email'])}}
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-1" for="pwd">Birth : </label>
-                    {{Form::date('Birth', $userinfo['BirthShow'] , ['class' => 'form-control' , 'placeholder' => 'Birth'])}}
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-1" for="pwd">Gender : </label>
-
-                    <select name="Gender" class="form-control" id="">
-                        <option value="0" <?php if ($userinfo['Gender'] == '0') {
-                            echo "selected";
-                        }?>>Male
-                        </option>
-                        <option value="1" <?php if ($userinfo['Gender'] == '1') {
-                            echo "selected";
-                        }?>>Female
-                        </option>
-                    </select>
-                </div>
-                <h2>Car</h2>
-                <?php foreach($carUserListData as $key=>$val){
-                ?>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="carList[]"
-                               <?php echo $val['Checked'];?> value="<?php echo $val['carID'];?>">
-                        <?php echo $val['car'];?>
-                    </label>
-                </div>
-                <?php }?>
-                <h2>Company</h2>
-                <?php foreach($companyListData as $key=>$val){
-                ?>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="companyList[]"
-                               <?php echo $val['Checked'];?> value="<?php echo $val['CompanyID'];?>">
-                        <?php echo $val['Company'];?>
-                    </label>
-                </div>
-                <?php }?>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                {!! Form::close() !!}
                 <button class="btn btn-primary active mt-3" type="button"
-                        onclick="window.location='{{url('profile')}}';">Back to profile
+                        onclick="window.location='{{url('bank')}}';">Back to profile
                 </button>
                 <br><br><br>
-                {{Form::hidden('id', $userinfo['UserID'])}}
-                {!! Form::close() !!}
             </div>
         </div>
         <!-- /.inner -->

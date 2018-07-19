@@ -1,4 +1,4 @@
-@extends('admin.layout.profile')
+@extends('admin.layout.bank')
 
 @section('toolbar')
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -448,7 +448,6 @@
     <div class="outer">
         <div class="inner bg-light lter">
             <div class="col-lg-8">
-                {!! Form::open(['url' => '/saverefcar']) !!}
                 <div class="container">
                     <h1>Bank</h1>
                     <div class="container">
@@ -474,7 +473,7 @@
                                 <td>{{$val['bankAccountName']}}</td>
                                 <td>
                                     <button class="btn btn-primary active mt-3" type="button"
-                                            onclick="window.location='{{url('profile')}}';">Back to profile
+                                            onclick="window.location='{{url('editBank')}}/{{$val['bankAccountID']}}';">Edit Bank
                                     </button>
                                 </td>
                             </tr>
@@ -490,7 +489,6 @@
                     </button>
                     <br><br><br>
                 </div>
-                {!! Form::close() !!}
             </div>
         </div>
         <!-- /.inner -->

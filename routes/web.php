@@ -28,11 +28,13 @@ Route::post('/saveregister', 'MyuserController@saveregisterpage');
 Route::get('/profile', 'MyuserController@profilepage');
 Route::get('/editprofile', 'MyuserController@editprofile');
 Route::get('/bank', 'MyuserController@bank');
+Route::get('/editBank/{id}', 'MyuserController@editBank');
 
 Route::post('/checklogin', 'MyuserController@checklogin');
 Route::post('/saveprofile', 'MyuserController@saveprofile');
 Route::post('/saverefcar', 'Myusercontroller@saverefcar');
 Route::post('/saverefcompany', 'Myusercontroller@saverefcompany');
+Route::post('/saveEditBank', 'Myusercontroller@saveEditBank');
 
 
 Route::get('/form', 'Auth\LoginController@form');
