@@ -479,7 +479,7 @@
                             <p><?php echo $val['Company'];?></p>
                         </label>
                         <button class="btn btn-primary active mt-3" type="button" class="btn btn-primary"
-                                onclick="window.location='{{url('editBank')}}'">Bank
+                                onclick="window.location='{{url('bank')}}'">Bank
                         </button>
                     </div>
                     <?php }?>

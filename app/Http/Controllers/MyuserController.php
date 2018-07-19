@@ -186,7 +186,7 @@ class MyuserController extends Controller
         return view('admin.editprofilepage')->with($data);
     }
 
-    public function editBank()
+    public function bank()
     {
         $bankList = bankAccount::all();
         $bankListData = array();
@@ -207,7 +207,7 @@ class MyuserController extends Controller
             'bankListData' => $bankListData
         );
 //        dd($bankListData);
-        return view('admin.editBankPage')->with($data);
+        return view('admin.bankPage')->with($data);
     }
 
 }

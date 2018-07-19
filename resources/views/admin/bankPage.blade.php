@@ -465,14 +465,19 @@
                             <tbody>
 
                             <?php foreach ($bankListData as $key => $val) {
-                                ?>
-                                <tr>
-                                    <td>{{$val['bankAccountID']}}</td>
-                                    <td>{{$val['bankAccountNo']}}</td>
-                                    <td>{{$val['bankBranch']}}</td>
-                                    <td>{{$val['bankName']}}</td>
-                                    <td>{{$val['bankAccountName']}}</td>
-                                </tr>
+                            ?>
+                            <tr>
+                                <td>{{$val['bankAccountID']}}</td>
+                                <td>{{$val['bankAccountNo']}}</td>
+                                <td>{{$val['bankBranch']}}</td>
+                                <td>{{$val['bankName']}}</td>
+                                <td>{{$val['bankAccountName']}}</td>
+                                <td>
+                                    <button class="btn btn-primary active mt-3" type="button"
+                                            onclick="window.location='{{url('profile')}}';">Back to profile
+                                    </button>
+                                </td>
+                            </tr>
                             <?php }?>
                             <tr>
 

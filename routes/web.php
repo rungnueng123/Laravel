@@ -27,7 +27,7 @@ Route::get('/login', 'MyuserController@loginpage');
 Route::post('/saveregister', 'MyuserController@saveregisterpage');
 Route::get('/profile', 'MyuserController@profilepage');
 Route::get('/editprofile', 'MyuserController@editprofile');
-Route::get('/editBank', 'MyuserController@editBank');
+Route::get('/bank', 'MyuserController@bank');
 
 Route::post('/checklogin', 'MyuserController@checklogin');
 Route::post('/saveprofile', 'MyuserController@saveprofile');
