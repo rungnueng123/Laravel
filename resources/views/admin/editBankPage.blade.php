@@ -480,6 +480,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <button class="btn btn-primary active mt-3" type="button"
+                            onclick="window.location='{{url('profile')}}';">Back to profile
+                    </button>
                     <br><br><br>
                 </div>
                 {!! Form::close() !!}
