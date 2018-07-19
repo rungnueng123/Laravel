@@ -490,6 +490,17 @@
                     </label>
                 </div>
                 <?php }?>
+                <h2>Company</h2>
+                <?php foreach($companyListData as $key=>$val){
+                ?>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="companyList[]"
+                               <?php echo $val['Checked'];?> value="<?php echo $val['CompanyID'];?>">
+                        <?php echo $val['Company'];?>
+                    </label>
+                </div>
+                <?php }?>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button class="btn btn-primary active mt-3" type="button"
                         onclick="window.location='{{url('profile')}}';">Back to profile
