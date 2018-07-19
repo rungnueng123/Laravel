@@ -22,13 +22,13 @@
     <link href="{{url('bb/src/vendors/pace-progress/css/pace.min.css')}}" rel="stylesheet">
 </head>
 <body class="app flex-row align-items-center">
-    <div class="container">
-        <div class="row justify-content-center">
-            @yield('content')
-        </div>
+<div class="container">
+    <div class="row justify-content-center">
+        @yield('content')
     </div>
-    <!-- CoreUI and necessary plugins-->
-    <script src="{{url('bb/js/jquery/dist/jquery.min.js')}}"></script>
-    <script src="{{url('bb/js/bootstrap/assets/javascripts/bootstrap.min.js')}}"></script>
+</div>
+<!-- CoreUI and necessary plugins-->
+<script src="{{url('bb/js/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{url('bb/js/bootstrap/assets/javascripts/bootstrap.min.js')}}"></script>
 </body>
 </html>
