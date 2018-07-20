@@ -256,4 +256,14 @@ class MyuserController extends Controller
         return view('admin.allCompanyPage')->with($dataAllCompany);
     }
 
+    public function deleteBankFromCompany(Request $request, $id)
+    {
+            $bankAccount = bankAccount::where('bankAccountID',$id);
+            $bankAccount->delete();
+
+
+            return redirect('/profile/allCompany');
+
+    }
+
 }

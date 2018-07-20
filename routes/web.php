@@ -36,7 +36,7 @@ Route::post('/saveprofile', 'MyuserController@saveprofile');
 Route::post('/saverefcar', 'Myusercontroller@saverefcar');
 Route::post('/saverefcompany', 'Myusercontroller@saverefcompany');
 Route::post('/saveEditBank', 'Myusercontroller@saveEditBank');
-Route::delete('/deleteBankFromCompany/{id}', 'Myusercontroller@deleteBankFromCompany');
+Route::get('/deleteBankFromCompany/{id}', 'Myusercontroller@deleteBankFromCompany');
 
 
 Route::get('/form', 'Auth\LoginController@form');
