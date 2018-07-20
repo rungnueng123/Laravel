@@ -63,9 +63,9 @@ class MyuserController extends Controller
             $carUserListData[$key]['car'] = $val['car'];
             $carUserListData[$key]['carID'] = $val['carID'];
             $carUserRecord = userCar::where('userID', $userinfo['UserID'])->where('carID', $val['carID'])->first();
-            $carUserListData[$key]['Checked'] = '';
+            $carUserListData[$key]['car'] = '';
             if (!empty($carUserRecord)) {
-                $carUserListData[$key]['Checked'] = 'checked';
+                $carUserListData[$key]['car'] = $val['car'];
             }
         }
         foreach ($companyList as $key => $val) {

@@ -462,14 +462,13 @@
                         }?></p>
                     <h2>Car</h2>
                     <?php foreach($carUserListData as $key=>$val){
-                    ?>
-                    <div class="checkbox">
+                    if (!empty($val['car'])){?>
+                    <div class="text-muted">
                         <label>
-                            <input type="checkbox" name="carList[]"
-                                   <?php echo $val['Checked'];?> value="<?php echo $val['carID'];?>">
-                            <?php echo $val['car'];?>
+                            <p><?php echo $val['car'];?></p>
                         </label>
                     </div>
+                    <?php }?>
                     <?php }?>
                     <h2>Company</h2>
                     <?php foreach($companyListData as $key=>$val){
