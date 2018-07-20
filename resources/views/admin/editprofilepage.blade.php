@@ -1,4 +1,4 @@
-@extends('admin.layout.editprofile')
+@extends('admin.layout.mainbackoffice')
 
 @section('toolbar')
     <nav class="navbar navbar-inverse navbar-static-top">

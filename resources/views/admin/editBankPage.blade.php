@@ -1,4 +1,4 @@
-@extends('admin.layout.editBank')
+@extends('admin.layout.mainbackoffice')
 
 @section('toolbar')
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -458,7 +458,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button class="btn btn-primary active mt-3" type="button"
-                        onclick="window.location='{{url('bank')}}';">Back to profile
+                        onclick="window.location='{{url('bank')}}';">Back to Bank
                 </button>
                 <br><br><br>
                 {{Form::hidden('id', $bankRecord['bankAccountID'])}}

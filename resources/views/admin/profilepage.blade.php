@@ -1,4 +1,4 @@
-@extends('admin.layout.profile')
+@extends('admin.layout.mainbackoffice')
 
 @section('toolbar')
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -489,7 +489,7 @@
                             onclick="window.location='{{url('bank')}}'">Bank
                     </button>
                     <button class="btn btn-primary active mt-3" type="button" class="btn btn-primary"
-                            onclick="window.location='{{url('company')}}'">All Company
+                            onclick="window.location='{{url('profile/allCompany')}}'">All Company
                     </button>
                     {{--<button type="button" class="btn btn-secondary">Edit</button>--}}
                     <br><br><br>

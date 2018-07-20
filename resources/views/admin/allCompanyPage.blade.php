@@ -445,42 +445,69 @@
 @endsection
 
 @section('content')
+    <script>
+        $( document ).ready(function() {
+            $('.btn_remove').click(function(){
+                var id = $(this).attr('id');
+                var txt;
+                var r = confirm("Press a button! : "+id+" ?");
+                if (r == true) {
+                    alert('OK');
+                    window.location='{{url('/deleteBankFromCompany')}}/'+id;
+                }
+            });
+        });
+    </script>
     <div class="outer">
         <div class="inner bg-light lter">
             <div class="col-lg-8">
                 <div class="container">
-                    <h1>Bank</h1>
+                    <div class="col-lg-8">
+                        <h1>Company</h1>
+                    </div>
                     <div class="container">
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>bankAccountID</th>
-                                <th>bankAccountNo</th>
-                                <th>bankBranch</th>
-                                <th>bankName</th>
-                                <th>bankAccountName</th>
+                                <th>Company ID</th>
+                                <th>Company Name</th>
+                                <th>BankList</th>
                             </tr>
                             </thead>
                             <tbody>
-
-                            <?php foreach ($bankListData as $key => $val) {
+                            <?php foreach ($companyListData as $key1 => $val1) {
                             ?>
                             <tr>
-                                <td>{{$val['bankAccountID']}}</td>
-                                <td>{{$val['bankAccountNo']}}</td>
-                                <td>{{$val['bankBranch']}}</td>
-                                <td>{{$val['bankName']}}</td>
-                                <td>{{$val['bankAccountName']}}</td>
+                                <td>{{$val1['CompanyID']}}</td>
+                                <td>{{$val1['Company']}}</td>
                                 <td>
-                                    <button class="btn btn-primary active mt-3" type="button"
-                                            onclick="window.location='{{url('editBank')}}/{{$val['bankAccountID']}}';">Edit Bank
-                                    </button>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Bank Account ID</th>
+                                            <th>Bank Account No.</th>
+                                            <th>Bank Branch</th>
+                                            <th>Bank Name</th>
+                                            <th>Bank Account Name</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php foreach ($val1['BankList'] as $key2 => $val2) {?>
+                                        <tr>
+                                            <td>{{$val2['bankAccountID']}}</td>
+                                            <td>{{$val2['bankAccountNo']}}</td>
+                                            <td>{{$val2['bankBranch']}}</td>
+                                            <td>{{$val2['bankName']}}</td>
+                                            <td>{{$val2['bankAccountName']}}</td>
+                                            <td><button class="btn btn-danger active mt-3 btn_remove" id="{{$val2['bankAccountID']}}" type="button">X
+                                                </button></td>
+                                        </tr>
+                                        <?php }?>
+                                        </tbody>
+                                    </table>
                                 </td>
                             </tr>
                             <?php }?>
-                            <tr>
-
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -490,6 +517,7 @@
                     <br><br><br>
                 </div>
             </div>
+
         </div>
         <!-- /.inner -->
     </div>

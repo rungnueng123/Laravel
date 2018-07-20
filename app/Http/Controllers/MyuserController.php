@@ -229,7 +229,7 @@ class MyuserController extends Controller
         return view('admin.bankPage')->with($data);
     }
 
-    public function editBank(Request $request,$id)
+    public function editBank(Request $request, $id)
     {
         $bankRecord = bankAccount::where('bankAccountID', $id)->first();
         $data = array(
@@ -237,6 +237,23 @@ class MyuserController extends Controller
         );
 //        dd(@$bankListData);
         return view('admin.editBankPage')->with($data);
+    }
+
+    public function allCompany()
+    {
+        $companyList = company::all();
+        $companyListData = array();
+        foreach ($companyList as $key => $val) {
+            $companyListData[$key]['CompanyID'] = $val['CompanyID'];
+            $companyListData[$key]['Company'] = $val['Company'];
+            //Bank at Company
+            $bankList = bankAccount::where('companyID', $val['CompanyID'])->get();
+            $companyListData[$key]['BankList'] = $bankList;
+        }
+        $dataAllCompany = array(
+            'companyListData' => $companyListData
+        );
+        return view('admin.allCompanyPage')->with($dataAllCompany);
     }
 
 }

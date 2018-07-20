@@ -54,6 +54,28 @@
     <link rel="stylesheet/less" type="text/css" href="{{url('am/public/assets/less/theme.less')}}">
     <script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js')}}"></script>
 
+    <!--jQuery -->
+    <script src="{{url('am/public/assets/lib/jquery/jquery.min.js')}}"></script>
+
+
+    <!--Bootstrap -->
+    <script src="{{url('am/public/assets/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- MetisMenu -->
+    <script src="{{url('am/public/assets/lib/metismenu/metisMenu.js')}}"></script>
+    <!-- onoffcanvas -->
+    <script src="{{url('am/public/assets/lib/onoffcanvas/onoffcanvas.js')}}"></script>
+    <!-- Screenfull -->
+    <script src="{{url('am/public/assets/lib/screenfull/screenfull.js')}}"></script>
+
+
+    <!-- Metis core scripts -->
+    <script src="{{url('am/public/assets/js/core.js')}}"></script>
+    <!-- Metis demo scripts -->
+    <script src="{{url('am/public/assets/js/app.js')}}"></script>
+
+
+    <script src="{{url('am/public/assets/js/style-switcher.js')}}"></script>
+
 </head>
 
 <body class="  ">
@@ -167,27 +189,7 @@
 </div>
 <!-- /.modal -->
 <!-- /#helpModal -->
-<!--jQuery -->
-<script src="{{url('am/public/assets/lib/jquery/jquery.min.js')}}"></script>
 
-
-<!--Bootstrap -->
-<script src="{{url('am/public/assets/lib/bootstrap/js/bootstrap.min.js')}}"></script>
-<!-- MetisMenu -->
-<script src="{{url('am/public/assets/lib/metismenu/metisMenu.js')}}"></script>
-<!-- onoffcanvas -->
-<script src="{{url('am/public/assets/lib/onoffcanvas/onoffcanvas.js')}}"></script>
-<!-- Screenfull -->
-<script src="{{url('am/public/assets/lib/screenfull/screenfull.js')}}"></script>
-
-
-<!-- Metis core scripts -->
-<script src="{{url('am/public/assets/js/core.js')}}"></script>
-<!-- Metis demo scripts -->
-<script src="{{url('am/public/assets/js/app.js')}}"></script>
-
-
-<script src="{{url('am/public/assets/js/style-switcher.js')}}"></script>
 </body>
 
 </html>

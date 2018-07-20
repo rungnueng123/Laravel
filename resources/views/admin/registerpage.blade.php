@@ -1,4 +1,4 @@
-@extends('admin.layout.register')
+@extends('admin.layout.account')
 
 @section('content')
 
